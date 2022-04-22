@@ -1,4 +1,4 @@
-package com.azship.graphQL;
+package com.azship.api.graphQL;
 
 
 import com.azship.api.entities.Frete;
