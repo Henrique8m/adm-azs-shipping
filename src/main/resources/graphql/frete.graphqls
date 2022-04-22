@@ -1,19 +1,19 @@
+
+
 type Frete{
     id:ID
     custo:String
     nota:String
     nome:String
-    cliente:String
-    destinatario:String
-    produtos:String
+
+
+
 }
 input FreteInput{
     custo:String
     nota:String
     nome:String
-    cliente:String
-    destinatario:String
-    produtos:String
+
 
 }
 input FreteUpdatedInput{
@@ -21,9 +21,7 @@ input FreteUpdatedInput{
     custo:String
     nota:String
     nome:String
-    cliente:String
-    destinatario:String
-    produtos:String
+
 
 }
 
@@ -41,5 +39,5 @@ extend type Mutation {
 
     updated(frete:FreteUpdatedInput!):Frete
 
-    deletePortage(id:ID!):Boolean
+    removerFrete(id:ID!):Boolean
 }

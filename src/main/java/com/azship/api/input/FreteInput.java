@@ -1,5 +1,6 @@
 package com.azship.api.input;
 
+import com.azship.api.entities.Endereco;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,8 +14,9 @@ public class FreteInput {
     private String custo;
     private String nota;
     private String nome;
-//    private Cliente cliente;
-    private String destinatario;
-//    private List<Produto> produtos;
+    private String cliente;
+
+    private Endereco destinatario;
+    private String produtos;
 
 }

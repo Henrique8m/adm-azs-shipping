@@ -42,7 +42,7 @@ public class FreteGraphQL implements GraphQLQueryResolver, GraphQLMutationResolv
     }
 
     @Transactional
-    public Boolean deletePortage(Long id){
+    public Boolean removerFrete(Long id){
         return service.deleteById(id);
     }
 }

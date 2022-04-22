@@ -3,9 +3,12 @@ package com.azship.api.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -21,7 +24,13 @@ public class Frete implements Serializable {
     private String nota;
     private String nome;
     private String cliente;
-    private String destinatario;
-    private String produtos;
+
+    @OneToMany(mappedBy = "frete")
+    private List<Produto> produtos = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "destinatario_id")
+    private Endereco destinatario;
+
 
 }
