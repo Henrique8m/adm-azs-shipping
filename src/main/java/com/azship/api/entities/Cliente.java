@@ -1,16 +1,14 @@
 package com.azship.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -18,16 +16,22 @@ import java.util.Set;
 @AllArgsConstructor
 @Table(name = "Tb_Clientes")
 public class Cliente implements Serializable {
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "cliente")
-    private List<Endereco> endereco = new ArrayList<>();
     private String name;
     private String email;
     private String telefone;
+   // @JsonIgnore
     private String cpf;
+   // @JsonIgnore
+    private String cnpj;
 
+    @OneToMany(mappedBy = "cliente")
+    private List<Endereco> endereco = new ArrayList<>();
+
+    @OneToMany
+    @JsonIgnore
+    private List<Frete> frete = new ArrayList<>();
 }

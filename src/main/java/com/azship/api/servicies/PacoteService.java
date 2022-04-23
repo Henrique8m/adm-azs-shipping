@@ -1,7 +1,7 @@
 package com.azship.api.servicies;
 
-import com.azship.api.entities.Produto;
-import com.azship.api.repositories.ProdutoRepository;
+import com.azship.api.entities.Pacote;
+import com.azship.api.repositories.PacoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,22 +9,22 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class ProdutoService {
+public class PacoteService {
 
     @Autowired
-    private ProdutoRepository repository;
+    private PacoteRepository repository;
 
-    public Produto findById(Long id){
+    public Pacote findById(Long id){
         return repository.findById(id).orElse(null);
     }
 
-    public List<Produto> findAll(){
+    public List<Pacote> findAll(){
         return repository.findAll();
     }
 
     @Transactional
-    public Produto save(Produto produto){
-        return repository.save(produto);
+    public Pacote save(Pacote pacote){
+        return repository.save(pacote);
     }
 
     @Transactional

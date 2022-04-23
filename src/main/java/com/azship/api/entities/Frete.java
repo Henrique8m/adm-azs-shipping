@@ -1,9 +1,9 @@
 package com.azship.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,18 +19,37 @@ public class Frete implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String custo;
-    private String nota;
-    private String nome;
-    private String cliente;
-
-    @OneToMany(mappedBy = "frete")
-    private List<Produto> produtos = new ArrayList<>();
+    @JsonIgnore
+    private double custoporkilo;
+    private double custodofrete;
+    private int notafiscal;
+    private String observacao;
 
     @OneToOne
-    @JoinColumn(name = "destinatario_id")
-    private Endereco destinatario;
+    private Cliente destinatario;
+    @OneToOne
+    private Cliente remetente;
+    @OneToMany(mappedBy = "frete",fetch = FetchType.EAGER)
+    private List<Pacote> pacote = new ArrayList<>();
+    @OneToOne(mappedBy = "frete")
+    private Motorista motorista;
 
+    public Double getCustoDoFrete(){
 
+        if(custoporkilo==0)custoporkilo=5d;
+        Double custo = 0d;
+        Double pesoCalculado = 0d;
+        for(com.azship.api.entities.Pacote list: pacote){
+
+            int quant =  list.getQuantidade();
+            Double peso = list.getPesoFinal();
+            pesoCalculado += peso * quant;
+
+        }
+        while(pesoCalculado>1d){
+            pesoCalculado -= 1d;
+            custo += 1 * custoporkilo;
+        }
+        return custo;
+    }
 }

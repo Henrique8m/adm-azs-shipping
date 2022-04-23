@@ -28,14 +28,14 @@ public class FreteGraphQL implements GraphQLQueryResolver, GraphQLMutationResolv
     }
 
     @Transactional
-    public Frete save(FreteInput freteInput ){
+    public Frete saveFrete(FreteInput freteInput ){
         ModelMapper map = new ModelMapper();
         Frete frete = map.map(freteInput,Frete.class);
         return service.save(frete);
     }
 
     @Transactional
-    public Frete updated(FreteInput freteInput ){
+    public Frete updatedFrete(FreteInput freteInput ){
         ModelMapper map = new ModelMapper();
         Frete frete = map.map(freteInput,Frete.class);
         return service.save(frete);

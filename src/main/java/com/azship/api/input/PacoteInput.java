@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
-public class ProdutoInput {
+public class PacoteInput {
 
     private Long id;
     private String quantidade;

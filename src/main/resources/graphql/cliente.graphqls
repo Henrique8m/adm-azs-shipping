@@ -1,0 +1,34 @@
+type Cliente {
+    name:String
+    email:String
+    telefone:String
+    cpf:String
+    cnpj:String
+    endereco:[Endereco]
+    frete:[Frete]
+}
+
+input ClienteInput{
+    id:ID
+
+}
+input ClienteUpdatedInput{
+    id:ID
+}
+
+extend type Query {
+
+    cliente(id:ID!):Cliente
+
+    clientes:[Cliente]!
+
+}
+
+extend type Mutation {
+
+    saveCliente(cliente:ClienteInput!):Cliente
+
+    updatedCliente(cliente:ClienteUpdatedInput!):Cliente
+
+    removerCliente(id:ID!):Boolean
+}

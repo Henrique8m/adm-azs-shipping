@@ -1,5 +1,6 @@
 package com.azship.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,10 @@ public class Motorista implements Serializable {
     private String name;
     private String email;
     private String telefone;
-    private String cpf;
-    //    @OneToOne
-    private String fretes;
+    private Integer cpf;
+    private Integer cnh;
+    @JsonIgnore
+    @OneToOne
+    private Frete frete;
 
 }

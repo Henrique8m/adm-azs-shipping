@@ -1,27 +1,31 @@
-
-
 type Frete{
     id:ID
-    custo:String
-    nota:String
-    nome:String
-
-
-
+    custoporkilo:Float
+    custodofrete:Float
+    notafiscal:Int
+    observacao:String
+    destinatario:Cliente
+    remetente:Cliente
+    pacote:[Pacote]
+    motorista:Motorista
 }
-input FreteInput{
-    custo:String
-    nota:String
-    nome:String
 
+type Motorista {
+    id:ID
+}
+type Pacote {
+    id:ID
+}
+type Endereco {
+    rua:String
+}
+
+input FreteInput{
+    id:ID
 
 }
 input FreteUpdatedInput{
     id:ID
-    custo:String
-    nota:String
-    nome:String
-
 
 }
 
@@ -35,9 +39,9 @@ extend type Query {
 
 extend type Mutation {
 
-    save(frete:FreteInput!):Frete
+    saveFrete(frete:FreteInput!):Frete
 
-    updated(frete:FreteUpdatedInput!):Frete
+    updatedFrete(frete:FreteUpdatedInput!):Frete
 
     removerFrete(id:ID!):Boolean
 }

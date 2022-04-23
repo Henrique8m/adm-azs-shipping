@@ -1,25 +1,31 @@
-insert into Tb_Fretes(id, custo, nota, nome) values (1, '2560 RS','35642-01', 'Remeça para pedro paulo');
+insert into Tb_Fretes(id, custoporkilo, custodofrete, notafiscal, observacao) values (1, 5, 0, 25642, 'Entregar Dona Maria');
 
-insert into Tb_Motoristas(id, name, email, telefone, cpf) values (1, 'Pedro Gren','Pedro@gmail.com', '986461464','1234567890');
 
-insert into Tb_Produtos(id, quantidade, cubagem, formato, peso) values (1, '2','3 m³', 'Padrão','30 Kg');
+insert into Tb_Motoristas(id, frete_id, name, email, telefone, cpf, cnh) values (1, 1, 'Pedro Gren','Pedro@gmail.com', '98646 1464',1234567890, 1543212542);
 
-insert into Tb_Endereços(id, rua, numero, bairro, cidade, estado, cep, pais, complemento) values (1, 'Rua Sao Paulo',' 43 ', 'Centro','Divinopolis', 'Minas Gerais', '35501-000', 'Brasil', 'O Cara que mora ali na esquina');
-insert into Tb_Endereços(id, rua, numero, bairro, cidade, estado, cep, pais, complemento) values (2, 'Rua  Paulo',' 43 ', 'ro','Divilis', 'erais', '3551-000', 'Bril', 'O Cara ');
+insert into Tb_Pacote(id, quantidade, altura, largura, comprimento ) values (1, 2 ,3 , 1, 2);
+insert into Tb_Pacote(id, quantidade, peso ) values (2, 1, 2);
+insert into Tb_Pacote(id, quantidade, altura, largura, comprimento, peso ) values (3, 1, 3, 4, 2, 2);
 
-insert into Tb_Clientes(id, name, email, telefone, cpf) values (1,'Bob Gren','Bob@gmail.com', '986461464','1234567890');
+
+
+insert into Tb_Clientes(id, name, email, telefone, cpf) values (1,'Bob Gren','Bob@gmail.com', '98646 1654','1234567890');
+insert into Tb_Clientes(id, name, email, telefone, cpf) values (2,'Maria Gren','maria@gmail.com.br', '98668 1464','1234567890');
+
+
+insert into Tb_Endereços(id, cliente_id, rua, numero, bairro, cidade, estado, cep, pais, complemento) values (1, 1, 'Rua Sao Paulo', 43 , 'Centro','Divinopolis', 'Minas Gerais', 35501000, 'Brasil', 'O Cara que mora ali na esquina');
+insert into Tb_Endereços(id, cliente_id, rua, numero, bairro, cidade, estado, cep, pais, complemento) values (2, 2, 'Rua  Paulo', 2543 , 'ro','Divilis', 'erais', 3551000, 'Bril', 'O Cara ');
+
+
 
 UPDATE
-  `Tb_Endereços`
-SET
-  cliente_id = 1;
-
-UPDATE
-  Tb_Fretes
-SET
-  destinatario_id = 1;
-
-UPDATE
-  Tb_Produtos
+Tb_Pacote
 SET
   frete_id = 1;
+
+
+UPDATE
+  tb_fretes
+SET
+  destinatario_id = 1,
+  remetente_id = 2;

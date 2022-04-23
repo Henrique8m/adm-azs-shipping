@@ -1,9 +1,10 @@
 package com.azship.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,19 +15,19 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Table(name = "Tb_Endereços")
 public class Endereco implements Serializable {
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Integer cep;
     private String rua;
-    private String numero;
+    private Integer numero;
     private String bairro;
     private String cidade;
     private String estado;
-    private String cep;
     private String pais;
     private String complemento;
-
+    @JsonIgnore
     @OneToOne
-    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 }
