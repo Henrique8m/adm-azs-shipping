@@ -1,5 +1,6 @@
 package com.azship.api.servicies;
 
+import com.azship.api.entities.Cliente;
 import com.azship.api.entities.Frete;
 import com.azship.api.repositories.FreteRepository;
 import org.springframework.beans.factory.annotation.Autowired;

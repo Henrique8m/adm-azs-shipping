@@ -1,0 +1,48 @@
+type Endereco {
+    id:ID
+    cep:Int
+    rua:String
+    numero:Int
+    bairro:String
+    estado:String
+    pais:String
+    complemento:String
+}
+
+input EnderecoInput{
+    cep:Int!
+    rua:String!
+    numero:Int!
+    bairro:String!
+    estado:String!
+    pais:String!
+    complemento:String
+
+}
+input EnderecoUpdatedInput{
+    id:ID!
+    cep:Int
+    rua:String
+    numero:Int
+    bairro:String
+    estado:String
+    pais:String
+    complemento:String
+}
+
+extend type Query {
+
+    endereco(id:ID!):Endereco
+
+    enderecos:[Endereco]!
+
+}
+
+extend type Mutation {
+
+    saveEndereco(endereco:EnderecoInput!):Endereco
+
+    updatedEndereco(endereco:EnderecoUpdatedInput!):Endereco
+
+    removerEndereco(id:ID!):Boolean
+}

@@ -1,0 +1,46 @@
+type Pacote {
+    id:ID
+    metadado:String
+    fatordecubagem:Int
+    quantidade:Int
+    pesofinal:String
+}
+
+input PacoteInput{
+    fatordecubagem:Int
+    quantidade:Int!
+    altura:Float
+    largura:Float
+    comprimento:Float
+    peso:Float
+
+}
+input PacoteUpdatedInput{
+    id:ID!
+    fatordecubagem:Int
+    quantidade:Int!
+    altura:Float
+    largura:Float
+    comprimento:Float
+    peso:Float
+}
+input PacoteId{
+    id:ID
+}
+
+extend type Query {
+
+    pacote(id:ID!):Pacote
+
+    pacotes:[Pacote]!
+
+}
+
+extend type Mutation {
+
+    savePacote(pacote:PacoteInput!):Pacote
+
+    updatedPacote(pacote:PacoteUpdatedInput!):Pacote
+
+    removerPacote(id:ID!):Boolean
+}

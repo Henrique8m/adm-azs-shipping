@@ -15,6 +15,16 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Table(name = "Tb_Endereços")
 public class Endereco implements Serializable {
+    public Endereco(Integer cep, String rua, Integer numero, String bairro, String cidade, String estado, String pais) {
+        this.cep = cep;
+        this.rua = rua;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.pais = pais;
+    }
+
     @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

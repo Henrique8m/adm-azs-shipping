@@ -16,33 +16,39 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "Tb_Fretes")
 public class Frete implements Serializable {
+
+    public Frete(float custoporkilo, int notafiscal, Cliente destinatario, Cliente remetente) {
+        this.custoporkilo = custoporkilo;
+        this.notafiscal = notafiscal;
+        this.destinatario = destinatario;
+        this.remetente = remetente;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @JsonIgnore
-    private double custoporkilo;
-    private double custodofrete;
+    private float custoporkilo;
+    private float custodofrete;
     private int notafiscal;
     private String observacao;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Cliente destinatario;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Cliente remetente;
-    @OneToMany(mappedBy = "frete",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "frete", fetch = FetchType.EAGER)
     private List<Pacote> pacote = new ArrayList<>();
-    @OneToOne(mappedBy = "frete")
-    private Motorista motorista;
 
-    public Double getCustoDoFrete(){
+    public double getCustodofrete(){
 
-        if(custoporkilo==0)custoporkilo=5d;
-        Double custo = 0d;
-        Double pesoCalculado = 0d;
-        for(com.azship.api.entities.Pacote list: pacote){
+        if(custoporkilo==0)custoporkilo=5;
+        double custo = 0d;
+        double pesoCalculado = 0d;
+        for(Pacote list: pacote){
 
             int quant =  list.getQuantidade();
-            Double peso = list.getPesoFinal();
+            double peso = list.getPesofinal();
             pesoCalculado += peso * quant;
 
         }

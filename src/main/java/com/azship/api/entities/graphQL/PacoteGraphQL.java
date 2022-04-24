@@ -1,9 +1,12 @@
-package com.azship.api.graphQL;
+package com.azship.api.entities.graphQL;
 
 
 import com.azship.api.entities.Cliente;
+import com.azship.api.entities.Pacote;
 import com.azship.api.input.ClienteInput;
+import com.azship.api.input.PacoteInput;
 import com.azship.api.servicies.ClienteService;
+import com.azship.api.servicies.PacoteService;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.modelmapper.ModelMapper;
@@ -14,35 +17,35 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
-public class ClienteGraphQL implements GraphQLQueryResolver, GraphQLMutationResolver {
+public class PacoteGraphQL implements GraphQLQueryResolver, GraphQLMutationResolver {
 
     @Autowired
-    private ClienteService service;
+    private PacoteService service;
 
-    public Cliente cliente(Long id){
+    public Pacote pacote(Long id){
         return service.findById(id);
     }
 
-    public List<Cliente> clientes(){
+    public List<Pacote> pacotes(){
        return service.findAll();
     }
 
     @Transactional
-    public Cliente saveCliente(ClienteInput clienteInput ){
+    public Pacote savePacote(PacoteInput pacoteInput ){
         ModelMapper map = new ModelMapper();
-        Cliente cliente = map.map(clienteInput,Cliente.class);
-        return service.save(cliente);
+        Pacote pacote = map.map(pacoteInput,Pacote.class);
+        return service.save(pacote);
     }
 
     @Transactional
-    public Cliente updatedCliente(ClienteInput clienteInput ){
+    public Pacote updatedPacote(PacoteInput pacoteInput ){
         ModelMapper map = new ModelMapper();
-        Cliente cliente = map.map(clienteInput,Cliente.class);
-        return service.save(cliente);
+        Pacote pacote = map.map(pacoteInput,Pacote.class);
+        return service.save(pacote);
     }
 
     @Transactional
-    public Boolean removerCliente(Long id){
+    public Boolean removerPacote(Long id){
         return service.deleteById(id);
     }
 }

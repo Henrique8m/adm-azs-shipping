@@ -22,4 +22,7 @@ public class ClienteInput {
     private String cnpj;
     private List<Endereco> endereco = new ArrayList<>();
     private List<Frete> frete = new ArrayList<>();
+
+    private List<Long> enderecos = new ArrayList<>();
+
 }

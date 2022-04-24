@@ -1,5 +1,6 @@
 package com.azship.api.servicies;
 
+import com.azship.api.entities.Cliente;
 import com.azship.api.entities.Endereco;
 import com.azship.api.repositories.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,10 @@ public class EnderecoService {
         }
         return false;
     }
+
+    public List<Endereco> findAllByCliente(Cliente cliente) {
+        return repository.findAllByCliente(cliente);
+    }
+
 }
 

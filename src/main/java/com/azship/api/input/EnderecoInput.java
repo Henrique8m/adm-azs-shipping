@@ -9,13 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EnderecoInput {
     private Long id;
-
+    private Integer cep;
     private String rua;
-    private String numero;
+    private Integer numero;
     private String bairro;
     private String cidade;
     private String estado;
-    private String cep;
     private String pais;
     private String complemento;
 }

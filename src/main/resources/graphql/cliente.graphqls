@@ -1,19 +1,28 @@
 type Cliente {
+    id:ID
     name:String
     email:String
     telefone:String
     cpf:String
     cnpj:String
     endereco:[Endereco]
-    frete:[Frete]
 }
-
 input ClienteInput{
-    id:ID
+    name:String!
+    email:String
+    telefone:String!
+    cpf:String!
+    cnpj:String
+    enderecos:[ID]
 
 }
 input ClienteUpdatedInput{
-    id:ID
+    id:ID!
+    name:String
+    email:String
+    telefone:String
+    cpf:String
+    cnpj:String
 }
 
 extend type Query {
